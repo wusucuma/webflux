@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 public class HelloHandler {
 
-    public Mono<ServerResponse> handleRequest(ServerRequest req) {
-        return ServerResponse.ok().body(Mono.just(Arrays.asList(1,2,3)), List.class);
-    }
+  public Mono<ServerResponse> handleRequest(ServerRequest req) {
+    return ServerResponse.ok().body(Mono.just(Arrays.asList(1, 2, 3)), List.class);
+  }
 }

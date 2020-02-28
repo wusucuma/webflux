@@ -1,4 +1,4 @@
-package com.bera.webflux.config;
+package com.bera.webflux.router;
 
 import com.bera.webflux.handler.HelloHandler;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +10,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 
 @Configuration
-public class RouterConfig {
+public class HelloRouter {
 
   @Bean
   RouterFunction<ServerResponse> helloFunction(HelloHandler handler) {
