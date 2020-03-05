@@ -2,11 +2,14 @@ plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
+    id 'net.ltgt.apt' version '0.20'
 }
 
 group = 'com.bera'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
+apply plugin: 'net.ltgt.apt-idea'
 
 configurations {
     compileOnly {
@@ -22,15 +25,17 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//    implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.springframework.boot:spring-boot-devtools'
     compile 'com.h2database:h2:1.4.197'
     compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'io.projectreactor:reactor-test'
+    implementation "org.mapstruct:mapstruct-jdk8:1.3.1.Final"
+    annotationProcessor "org.mapstruct:mapstruct-processor:1.3.1.Final"
+    annotationProcessor 'org.projectlombok:lombok'
+    testAnnotationProcessor "org.mapstruct:mapstruct-processor:1.3.1.Final"
 }
 
 test {

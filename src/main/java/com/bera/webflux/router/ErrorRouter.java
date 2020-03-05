@@ -1,5 +1,6 @@
 package com.bera.webflux.router;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
@@ -15,6 +16,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.Map;
 
+@Slf4j
 @Component
 @Order(-2)
 public class ErrorRouter extends AbstractErrorWebExceptionHandler {
@@ -33,9 +35,8 @@ public class ErrorRouter extends AbstractErrorWebExceptionHandler {
   }
 
   private Mono<ServerResponse> errorResponse(ServerRequest request) {
-    final Map<String, Object> response = getErrorAttributes(request, true);
-
-    return ServerResponse.status(HttpStatus.valueOf((String) response.getOrDefault("status", 500)))
+    final Map<String, Object> response = getErrorAttributes(request, false);
+    return ServerResponse.status(HttpStatus.valueOf((Integer) response.getOrDefault("status", "500")))
         .contentType(MediaType.APPLICATION_JSON)
         .body(BodyInserters.fromValue(response));
   }
