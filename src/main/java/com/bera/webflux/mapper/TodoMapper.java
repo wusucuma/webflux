@@ -3,6 +3,7 @@ package com.bera.webflux.mapper;
 import com.bera.webflux.dto.TodoCreateDto;
 import com.bera.webflux.dto.TodoDto;
 import com.bera.webflux.dto.TodoRequestDto;
+import com.bera.webflux.dto.TodoUpdateDto;
 import com.bera.webflux.entity.Todo;
 import org.mapstruct.Mapper;
 
@@ -18,4 +19,6 @@ public interface TodoMapper {
   public TodoDto toDto(Todo todo);
 
   public List<TodoDto> toDto(List<Todo> todo);
+
+  public TodoUpdateDto toUpdateDto(TodoRequestDto.TodoDoneUpdate update);
 }

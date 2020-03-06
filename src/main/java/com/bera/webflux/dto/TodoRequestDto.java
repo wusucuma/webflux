@@ -10,4 +10,12 @@ public class TodoRequestDto {
   public static class TodoCreate {
     private String content;
   }
+
+  @ToString
+  @Getter
+  public static class TodoDoneUpdate {
+    private Long id;
+
+    private Boolean done;
+  }
 }
